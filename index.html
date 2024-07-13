@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muebles y deco</title>
+    <link rel="stylesheet" href="./static/css/estilos.css">
+    
+</head>
+
+
+<body>
+    <header>
+        <nav class="navbar-index ">
+            <img class="logo-nav" src="static/imagenes/logo.png" alt="logo">
+        </nav>
+    </header>
+
+
+    <div>
+        <div class="logo-centrado">
+            <img src="static/imagenes/logo.png" alt="logo">
+        </div>
+        <h1>Productos</h1><br>
+        <table>
+            <tr>
+                <td class="contenedor-centrado"><a href="altas.html">Alta de productos</a></td>
+            </tr>
+            <tr>
+                <td class="contenedor-centrado "><a href="listado.html">Listado de productos</a></td>
+            </tr>
+            <tr>
+                <td class="contenedor-centrado "><a href="modificaciones.html">Modificar datos de productos</a></td>
+            </tr>
+            <tr>
+                <td class="contenedor-centrado "><a href="listadoEliminar.html">Eliminar productos</a></td>
+            </tr>
+            <tr>
+                <td class="contenedor-centrado "><a href="login.html">Registrate</a></td>
+            </tr>
+        </table>
+    </div>
+        <script>
+            fetch('http://127.0.0.1:5000/')
+
+            fetch('http://127.0.0.1:5000/')
+                .then(response => response.json())
+                .then(data => {
+                    const productosDiv = document.getElementById('productos');
+                    data.forEach(producto => {
+                        const div = document.createElement('div');
+                        div.textContent = `${producto.descripcion}: $${producto.precio}`;
+                        productosDiv.appendChild(div);
+                    });
+                })
+                .catch(error => console.error('Error'))
+
+            fetch('http://127.0.0.1:5000/productos')
+                .then(response => response.json())
+                .then(data => {
+                    const productosDiv = document.getElementById('productos');
+                    data.forEach(producto => {
+                        const div = document.createElement('div');
+                        div.textContent = `${producto.descripcion}: $${producto.precio}`;
+                        productosDiv.appendChild(div);
+                    });
+                })
+                .catch(error => console.error('Error:', error));
+        </script>
+</body>
+</html>
